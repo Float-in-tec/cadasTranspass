@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Check-in para eventos da associação CadasTranspass." />
+  <title>CadasTranspass — Check-in de Evento</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+</head>
+<body>
+  <main class="container" style="max-width: 480px; padding-top: 3rem;">
+    <hgroup>
+      <h1>📋 Check-in de Evento</h1>
+      <p>Registre sua presença no evento de hoje.</p>
+    </hgroup>
+
+    <article>
+      <form method="POST" action="/evento" novalidate>
+
+        <label for="nome_social">
+          Nome social *
+          <input
+            type="text"
+            id="nome_social"
+            name="nome_social"
+            placeholder="Como você se identifica"
+            required
+            autocomplete="name"
+          />
+        </label>
+
+        <fieldset>
+          <label for="aceite_imagem">
+            <input
+              type="checkbox"
+              id="aceite_imagem"
+              name="aceite_imagem"
+            />
+            Aceito o uso da minha imagem para fins de comunicação e divulgação do evento
+            pela associação.
+          </label>
+        </fieldset>
+
+        <button type="submit" class="contrast">Registrar presença</button>
+      </form>
+    </article>
+
+    <p>
+      <a href="/">← Voltar ao início</a>
+    </p>
+  </main>
+</body>
+</html>

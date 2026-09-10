@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Carteirinha digital da associação." />
+  <title>CadasTranspass — Carteirinha Digital</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+  <style>
+    /* Estilo da carteirinha usando apenas propriedades inline e mínimo de CSS
+       para não depender de frameworks extras além do PicoCSS. */
+    .carteirinha {
+      border: 3px solid var(--pico-primary);
+      border-radius: var(--pico-border-radius);
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f0f4ff 0%, #fce4f8 100%);
+    }
+    .carteirinha .bandeira {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .carteirinha h2 {
+      margin-bottom: 0.25rem;
+    }
+    .carteirinha .badge {
+      display: inline-block;
+      background: var(--pico-primary);
+      color: var(--pico-primary-inverse);
+      border-radius: 999px;
+      padding: 0.25rem 1rem;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .carteirinha .validade {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--pico-muted-color);
+    }
+  </style>
+</head>
+<body>
+  <main class="container" style="max-width: 480px; padding-top: 3rem;">
+    <hgroup>
+      <h1>🏳️‍⚧️ CadasTranspass</h1>
+      <p>Sua carteirinha digital está ativa.</p>
+    </hgroup>
+
+    <div class="carteirinha">
+      <span class="bandeira" aria-hidden="true">🏳️‍⚧️</span>
+      <h2>{{ nome_social }}</h2>
+      <span class="badge">{{ identidade_genero }}</span>
+
+      {% if raca_etnia and raca_etnia != "Prefiro não informar" %}
+      <p style="margin-top: 1rem; margin-bottom: 0;">
+        <strong>Raça / Etnia:</strong> {{ raca_etnia }}
+      </p>
+      {% endif %}
+
+      <p class="validade">
+        <strong>Associação CadasTranspass</strong><br />
+        Carteirinha digital — Cadastro Aprovado ✅
+      </p>
+    </div>
+
+    <p style="margin-top: 2rem; text-align: center;">
+      <a href="/evento" role="button" class="outline">📋 Fazer check-in em evento</a>
+    </p>
+    <p style="text-align: center;">
+      <a href="/">← Voltar ao início</a>
+    </p>
+  </main>
+</body>
+</html>

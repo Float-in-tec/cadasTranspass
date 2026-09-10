@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mensagem de status do cadastro." />
+  <title>CadasTranspass — {{ titulo }}</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+</head>
+<body>
+  <main class="container" style="max-width: 480px; padding-top: 3rem;">
+    <hgroup>
+      <h1>🏳️‍⚧️ CadasTranspass</h1>
+    </hgroup>
+
+    {# PicoCSS usa data-theme no article para contextualizar a cor #}
+    {% if tipo == "sucesso" %}
+    <article>
+      <header><strong>✅ {{ titulo }}</strong></header>
+      <p>{{ mensagem }}</p>
+    </article>
+
+    {% elif tipo == "info" %}
+    <article>
+      <header><strong>⏳ {{ titulo }}</strong></header>
+      <p>{{ mensagem }}</p>
+    </article>
+
+    {% elif tipo == "erro" %}
+    <article>
+      <header><strong>❌ {{ titulo }}</strong></header>
+      <p>{{ mensagem }}</p>
+    </article>
+
+    {% else %}
+    <article>
+      <p>{{ mensagem }}</p>
+    </article>
+    {% endif %}
+
+    <p>
+      <a href="/" role="button" class="outline">← Voltar ao início</a>
+    </p>
+  </main>
+</body>
+</html>

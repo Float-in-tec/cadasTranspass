@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Formulário de cadastro para emissão de carteirinha digital." />
+  <title>CadasTranspass — Novo Cadastro</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+</head>
+<body>
+  <main class="container" style="max-width: 640px; padding-top: 2rem; padding-bottom: 3rem;">
+    <hgroup>
+      <h1>🏳️‍⚧️ Novo Cadastro</h1>
+      <p>Preencha o formulário abaixo para solicitar sua carteirinha digital.</p>
+    </hgroup>
+
+    <article>
+      <form method="POST" action="/cadastro" novalidate>
+
+        <!-- ── Dados pessoais básicos ── -->
+        <fieldset>
+          <legend><strong>Dados pessoais</strong></legend>
+
+          <label for="cpf">
+            CPF *
+            <input
+              type="text"
+              id="cpf"
+              name="cpf"
+              inputmode="numeric"
+              placeholder="Somente números"
+              maxlength="14"
+              value="{{ cpf }}"
+              required
+            />
+          </label>
+
+          <label for="data_nascimento">
+            Data de nascimento *
+            <input
+              type="date"
+              id="data_nascimento"
+              name="data_nascimento"
+              value="{{ data_nascimento }}"
+              required
+            />
+          </label>
+
+          <label for="nome_social">
+            Nome social *
+            <input
+              type="text"
+              id="nome_social"
+              name="nome_social"
+              placeholder="Como você se identifica"
+              required
+            />
+          </label>
+
+          <label for="nome_registro">
+            Nome de registro *
+            <input
+              type="text"
+              id="nome_registro"
+              name="nome_registro"
+              placeholder="Nome conforme documento oficial"
+              required
+            />
+          </label>
+        </fieldset>
+
+        <!-- ── Identidade e diversidade ── -->
+        <fieldset>
+          <legend><strong>Identidade e diversidade</strong></legend>
+
+          <label for="identidade_genero">
+            Identidade de gênero *
+            <select id="identidade_genero" name="identidade_genero" required>
+              <option value="" disabled selected>Selecione…</option>
+              <optgroup label="Trans / Não-binárie">
+                <option>Mulher trans</option>
+                <option>Homem trans</option>
+                <option>Não-binárie</option>
+                <option>Travesti</option>
+                <option>Gênero fluido</option>
+                <option>Agênero</option>
+                <option>Bigênero</option>
+                <option>Outra identidade trans/NB</option>
+              </optgroup>
+              <optgroup label="Cisgênero (não elegível)">
+                <option>Cisgênero</option>
+              </optgroup>
+            </select>
+            <small>
+              Esta associação é destinada exclusivamente a pessoas trans e não-binárias.
+            </small>
+          </label>
+
+          <label for="raca_etnia">
+            Raça / Etnia *
+            <select id="raca_etnia" name="raca_etnia" required>
+              <option value="" disabled selected>Selecione…</option>
+              <option>Preta</option>
+              <option>Parda</option>
+              <option>Branca</option>
+              <option>Amarela</option>
+              <option>Indígena</option>
+              <option>Prefiro não informar</option>
+            </select>
+          </label>
+
+          <label for="inicio_transicao">
+            Início da transição (aproximado)
+            <input
+              type="month"
+              id="inicio_transicao"
+              name="inicio_transicao"
+            />
+            <small>Opcional.</small>
+          </label>
+        </fieldset>
+
+        <!-- ── Informações adicionais ── -->
+        <fieldset>
+          <legend><strong>Informações adicionais</strong></legend>
+
+          <label for="pcd">
+            Pessoa com deficiência (PCD)?
+            <select id="pcd" name="pcd">
+              <option value="Não" selected>Não</option>
+              <option value="Sim">Sim</option>
+              <option value="Prefiro não informar">Prefiro não informar</option>
+            </select>
+          </label>
+
+          <label for="rede_social">
+            Rede social (Instagram, etc.)
+            <input
+              type="text"
+              id="rede_social"
+              name="rede_social"
+              placeholder="@usuario (opcional)"
+            />
+          </label>
+        </fieldset>
+
+        <!-- ── Declaração de veracidade ── -->
+        <fieldset>
+          <label for="declaracao_verdade">
+            <input
+              type="checkbox"
+              id="declaracao_verdade"
+              name="declaracao_verdade"
+              required
+            />
+            Declaro que todas as informações fornecidas são verdadeiras e me responsabilizo
+            pelo uso indevido desta carteirinha. *
+          </label>
+        </fieldset>
+
+        <button type="submit" class="contrast">Enviar cadastro</button>
+      </form>
+    </article>
+
+    <p>
+      <a href="/">← Voltar para a tela inicial</a>
+    </p>
+  </main>
+</body>
+</html>
