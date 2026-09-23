@@ -34,6 +34,7 @@
               placeholder="Somente números"
               maxlength="14"
               value="{{ cpf }}"
+              oninput="mascaraCPF(this)"
               required
             />
           </label>
@@ -87,7 +88,6 @@
                 <option>Travesti</option>
                 <option>Gênero fluido</option>
                 <option>Agênero</option>
-                <option>Bigênero</option>
                 <option>Outra identidade trans/NB</option>
               </optgroup>
               <optgroup label="Cisgênero (não elegível)">
@@ -113,11 +113,13 @@
           </label>
 
           <label for="inicio_transicao">
-            Início da transição (aproximado)
+            Ano de início da transição
             <input
-              type="month"
+              type="year"
               id="inicio_transicao"
               name="inicio_transicao"
+              min="1910"
+              max="3000"
             />
             <small>Opcional.</small>
           </label>
@@ -169,5 +171,24 @@
       <a href="/">← Voltar para a tela inicial</a>
     </p>
   </main>
+  <script>
+    function mascaraCPF(input) {
+      // 1. Remove tudo que não for dígito (0-9)
+      let v = input.value.replace(/\D/g, ''); 
+      
+      // 2. Trava o tamanho máximo em 11 dígitos puros
+      if (v.length > 11) {
+        v = v.substring(0, 11);
+      }
+
+      // 3. Aplica a formatação usando grupos de Regex
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');       // Coloca o primeiro ponto
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');       // Coloca o segundo ponto
+      v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca o traço
+
+      // 4. Atualiza o valor do campo na tela
+      input.value = v;
+    }
+  </script>
 </body>
 </html>

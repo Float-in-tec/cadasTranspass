@@ -17,6 +17,7 @@ build/
 .venv/
 venv/
 env/
+.transenv/
 
 # IDEs
 .vscode/
